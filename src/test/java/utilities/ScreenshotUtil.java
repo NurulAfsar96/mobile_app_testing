@@ -5,21 +5,20 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
-import drivers.DriverManager;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 public class ScreenshotUtil {
-    public static String captureScreenshot(String testName) {
-        String screenshotPath = "screenshots/" + testName + ".png";
-        AndroidDriver<AndroidElement> driver = DriverManager.getDriver();
-        File srcFile = driver.getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(srcFile, new File(screenshotPath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return screenshotPath;
+    public static String captureScreenshot(AndroidDriver<AndroidElement> driver, String ScreenshotName) throws IOException 
+    {
+    	 TakesScreenshot ts = (TakesScreenshot) driver;
+		 File source = ts.getScreenshotAs(OutputType.FILE);
+		 String dest = System.getProperty("user.dir") + "\\screenshots\\" + ScreenshotName + ".png";
+		 File destination = new File(dest);
+		 FileUtils.copyFile(source, destination);
+		 return dest;	
+
     }
 }

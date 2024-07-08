@@ -32,12 +32,13 @@ public class BaseDriver {
 
         // Set the driver instance in DriverManager
         DriverManager.setDriver(driver);
+       
     }
 
     @AfterSuite
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
+    public void closeApp() 
+    	{
+            DriverManager.getDriver().quit();
         }
-    }
-}
+ }
+

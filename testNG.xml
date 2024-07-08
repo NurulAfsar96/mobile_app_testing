@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Default suite">
-    <test name="Default test">
+<suite name="Automation cartApp">
+    <test name="AddRemoveCartProduct">
         <classes>
             <class name="tests.HomepageTest"/>
+            <class name="tests.CategorypageTest"/>
         </classes>
     </test>
 </suite>
